@@ -1,0 +1,12 @@
+extends layout
+
+block content
+      #header
+        .header_content_mainline= title   
+        #header_content_tagline
+          | Регистрация
+        #header_content_boxcontent
+          form(method="POST" action="/reg")
+           input(type="text", name="username")
+           input(type="password", name="password")
+           input(type="submit", value="OK")

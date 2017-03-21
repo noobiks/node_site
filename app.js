@@ -9,6 +9,7 @@ var config = require('./config');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var themas = require('./routes/themas');
+var reg = require('./routes/reg');
 
 var app = express();
 
@@ -24,7 +25,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/themas', themas)
+app.use('/themas', themas);
+app.use('/reg', reg);
 app.use('/', index); // всегда последний, дефолтный 
 
 
