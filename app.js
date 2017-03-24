@@ -4,12 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+//var bootstrap = require('bootstrap');
 
 var config = require('./config');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var themas = require('./routes/themas');
 var reg = require('./routes/reg');
+var crud = require('./routes/crud');
 
 var app = express();
 
@@ -24,9 +26,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
+app.use(express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
+app.use(express.static(path.join(__dirname, '/node_modules/ckeditor/')));
 
 app.use('/themas', themas);
 app.use('/reg', reg);
+app.use('/crud', crud);
 app.use('/', index); // всегда последний, дефолтный 
 
 

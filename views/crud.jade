@@ -1,0 +1,13 @@
+extends layout
+block scripts
+    script(src='ckeditor.js')
+block content
+      #header
+        .header_content_mainline= title   
+        #header_content_tagline
+          | Кабинет пользователя
+        #header_content_boxcontent
+          form(method="POST" action="/crud")
+           input(type="text", name="username")
+           textarea.ckeditor(name="body")
+           input(type="button", name="button", value="Сохранить")

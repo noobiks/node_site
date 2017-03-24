@@ -16,6 +16,9 @@
 	"nconf": "*",
 	"mongoose": "*",
 	"crypto": "*",
-	"express-session": "*"
+	"express-session": "*",
+	"jQuery": "*",
+	"bootstrap": "*",
+	"ckeditor": "*"
   }
 }

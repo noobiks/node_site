@@ -3,7 +3,11 @@ html(xmlns='http://www.w3.org/1999/xhtml')
   head
     meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
     title Heartlys - Place Your Company Name Here
+    link(href='css/bootstrap.min.css', rel='stylesheet', type='text/css')
     link(href='css/stylesheet.css', rel='stylesheet', type='text/css')
+    block styles
+    script(src='jquery.min.js')
+    block scripts
   body
     #top_bar_black
       #logo_container
@@ -15,6 +19,7 @@ html(xmlns='http://www.w3.org/1999/xhtml')
           a.nav_button(href='schedule')  Расписание спектаклей
           a.nav_button(href='gallery')  Галлерея
           a.nav_button(href='contacts')  Контакты
+          a.nav_button(href='crud')  Кабинет
     #content_container
       block content
     #bottom_bar_black
