@@ -17,7 +17,7 @@ body {
 #content_container {
 	margin-left:auto;
 	margin-right:auto;
-	width:900px;
+	width:1200px;
 	height: 750px;
 	background-attachment: scroll;
 	background-image: url(../images/Untitled-4.png);
@@ -27,7 +27,7 @@ body {
 
 #logo_container {
 	height:90px;
-	width:900px;
+	width:1200px;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -61,7 +61,7 @@ body {
 }
 
 #nav_block {
-	width: 400px;
+	width: 600px;
 	height:90px;
 	float:right;
 }

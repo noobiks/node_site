@@ -19,6 +19,7 @@
 	"express-session": "*",
 	"jQuery": "*",
 	"bootstrap": "*",
-	"ckeditor": "*"
+	"ckeditor": "*",
+    "connect-mongo": "*"
   }
 }
