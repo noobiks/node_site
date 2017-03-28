@@ -7,9 +7,6 @@ var app = express();
 
 /* GET home page. */
 router.get('/:id?', function(req, res, next) {
-	//app.use(session({user}));
-	//console.log(req.param('id'));
-	console.log(req.session);
   if(req.params.id){
     var indx = req.params.id;
 	}else{
