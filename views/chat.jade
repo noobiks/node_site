@@ -1,0 +1,60 @@
+extends layout
+block scripts
+    script(src='socket.io.min.js')
+block content
+  h2. Чат
+  div(id='room')
+   ul(class='list-unstyled', id='mychat')
+   form
+    input(class='form-control', autocomplete='off', autofocus, placeholder='сообщение')
+  script.
+     var input = $('#room input');
+     var ul = $('#room ul');
+     var form = $('#room form');
+   
+     var socket = io.connect('*:*');
+   
+     socket
+         .on('message', function(message) {
+           printMessage(message);
+         })
+         .on('connect', function() {
+           printStatus("соединение установлено");
+           form.on('submit', sendMessage);
+           input.prop('disabled', false);
+         })
+         .on('disconnect', function() {
+           printStatus("соединение потеряно");
+           form.off('submit', sendMessage);
+           input.prop('disabled', true);
+           setTimeout(reconnect, 500);
+         });
+   
+     function sendMessage() {
+       var text = input.val();
+       socket.emit('message', text, function() {
+         printMessage(text);
+       });
+   
+       input.val('');
+       return false;
+     }
+   
+     function reconnect() {
+       socket.once('error', function() {
+         setTimeout(reconnect, 500);
+       });
+       socket.socket.connect();
+     }
+   
+     function printStatus(status) {
+       var li = document.createElement('li');
+       li.innerHTML = status;
+       document.getElementById('mychat').appendChild(li);
+     }
+   
+     function printMessage(text) {
+       var li = document.createElement('li');
+       li.innerHTML = text;
+       document.getElementById('mychat').appendChild(li);
+     }

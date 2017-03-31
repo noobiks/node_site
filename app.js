@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 //var bootstrap = require('bootstrap');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var http = require('http');
+
 
 var config = require('./config');
 var index = require('./routes/index');
@@ -14,6 +16,7 @@ var users = require('./routes/users');
 var themas = require('./routes/themas');
 var reg = require('./routes/reg');
 var crud = require('./routes/crud');
+var socket = require('./routes/socket');
 
 var app = express();
 
@@ -31,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
 app.use(express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
 app.use(express.static(path.join(__dirname, '/node_modules/ckeditor/')));
+app.use(express.static(path.join(__dirname, '/node_modules/socket.io-client/dist')));
 
 
 app.use(session({
@@ -44,6 +48,7 @@ app.use(session({
 app.use('/themas', themas);
 app.use('/reg', reg);
 app.use('/crud', crud);
+app.use('/chat', socket);
 app.use('/', index); // всегда последний, дефолтный 
 
 		
@@ -64,7 +69,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-app.listen(config.get('port'),function(){
+
+var server = http.createServer(app);
+server.listen(config.get('port'),function(){
 	console.log('Server listenning port ' + config.get('port'));
 });
+
+require('./socket')(server);
+
 module.exports = app;

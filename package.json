@@ -20,6 +20,7 @@
 	"jQuery": "*",
 	"bootstrap": "*",
 	"ckeditor": "*",
-    "connect-mongo": "*"
+    "connect-mongo": "*",
+	"socket.io": "*"
   }
 }
