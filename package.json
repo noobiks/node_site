@@ -21,6 +21,5 @@
 	"bootstrap": "*",
 	"ckeditor": "*",
     "connect-mongo": "*",
-	"socket.io": "*"
   }
 }
